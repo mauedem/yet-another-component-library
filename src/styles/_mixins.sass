@@ -20,3 +20,12 @@
         color: white
     background-color: $color
 
+/* Alert */
+@mixin alert-variant($color)
+    .alert__header
+        @if($color == $warning)
+            color: #666666
+        background-color: $color
+    .alert__body
+        background-color: rgba($color, .2)
+

@@ -1,0 +1,23 @@
+.breadcrumb
+    display: flex
+    flex-wrap: nowrap
+    padding: 12px 16px
+    list-style: none
+    background-color: #f6f6f6
+    border-radius: 4px
+
+    &__item
+        color: grey
+
+        &:not(:first-child)::before
+            content: "/"
+            padding:
+                left: 10px
+                right: 10px
+
+    .active
+        color: $primary
+        pointer-events: none
+
+        & .link
+            text-decoration: none
