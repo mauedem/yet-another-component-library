@@ -1,7 +1,10 @@
 import Vue from 'vue';
+import BaseButton from '@/components/BaseButton.vue';
 import App from './App.vue';
-// import router from './router';
 import store from './store';
+// import router from './router';
+
+Vue.component('btn', BaseButton);
 
 Vue.config.productionTip = false;
 

@@ -22,8 +22,6 @@ import { Colors } from '@/common/constants';
  */
 @Component
 export default class Badge extends Vue {
-    private colorsEnum = Colors;
-
     Colors = Colors;
 
     @Prop() color?: Colors;

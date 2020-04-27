@@ -1,5 +1,13 @@
 <template>
     <div>
+        <!-- Button -->
+        <btn :color="Colors.PRIMARY">Primary</btn>
+        <btn :color="Colors.SECONDARY">Secondary</btn>
+        <btn :color="Colors.SUCCESS">Success</btn>
+        <btn :color="Colors.WARNING">Warning</btn>
+        <btn :color="Colors.DANGER">Danger</btn>
+        <btn :color="Colors.INFO">Info</btn>
+
         <!-- Badge -->
         <badge :color="Colors.PRIMARY">Primary</badge>
         <badge :color="Colors.SECONDARY">Secondary</badge>
@@ -12,9 +20,10 @@
 </template>
 
 <script lang="ts">
-import { Colors } from '@/common/constants';
 import Vue from 'vue';
 import Component from 'vue-class-component';
+
+import { Colors } from '@/common/constants';
 import Badge from '@/components/Badge.vue';
 
 
