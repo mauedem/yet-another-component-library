@@ -98,6 +98,37 @@
         <spinner visible
                  color="info"></spinner>
 
+        <!-- Pagination -->
+        <h2>Pagination</h2>
+        <pagination :pages-count="30"
+                    :current-page="15">
+        </pagination>
+        <pagination :pages-count="30"
+                    :current-page="15"
+                    color="primary">
+        </pagination>
+        <pagination :pages-count="30"
+                    :current-page="15"
+                    color="secondary">
+        </pagination>
+        <pagination :pages-count="30"
+                    :current-page="15"
+                    color="success">
+        </pagination>
+        <pagination :pages-count="30"
+                    :current-page="15"
+                    color="warning">
+        </pagination>
+        <pagination :pages-count="30"
+                    :current-page="15"
+                    color="danger">
+        </pagination>
+        <pagination :pages-count="30"
+                    :current-page="15"
+                    color="info">
+        </pagination>
+
+
      </div>
 </template>
 
@@ -110,6 +141,7 @@ import Badge from '@/components/Badge.vue';
 import Alert from '@/components/Alert.vue';
 import Breadcrumb from '@/components/Breadcrumb.vue';
 import Spinner from '@/components/Spinner.vue';
+import Pagination from '@/components/Pagination.vue';
 
 @Component({
     components: {
@@ -117,6 +149,7 @@ import Spinner from '@/components/Spinner.vue';
         alert: Alert,
         breadcrumb: Breadcrumb,
         spinner: Spinner,
+        pagination: Pagination,
     },
 })
 export default class Demo extends Vue {

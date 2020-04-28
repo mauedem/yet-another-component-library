@@ -29,3 +29,55 @@
     .alert__body
         background-color: rgba($color, .2)
 
+/* Pagination */
+@mixin pagination-variant($color)
+    .pagination__item
+        @if ($color == $warning)
+            color: #666666
+        @else
+            color: rgba($color, .8)
+        border: $border-width solid $color
+
+        &:first-child
+            @if($color == $warning)
+                color: #666666
+            @else
+                color: white
+            background-color: $color
+
+            &:hover
+                background-color: darken($color, 10%)
+
+        &:last-child
+            @if($color == $warning)
+                color: #666666
+            @else
+                color: white
+            background-color: $color
+
+            &:hover
+                background-color: darken($color, 10%)
+
+        &:nth-child(2)
+            @if($color == $warning)
+                color: #666666
+            @else
+                color: rgba($color, .8)
+
+        &:nth-last-child(2)
+            @if($color == $warning)
+                color: #666666
+            @else
+                color: rgba($color, .8)
+
+        &:hover
+            background-color: rgba($color, 0.2)
+
+    & .active
+        @if ($color == $warning)
+            color: #666666
+        @else
+            color: white
+        background-color: $color !important
+
+
