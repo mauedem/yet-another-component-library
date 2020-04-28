@@ -2,24 +2,33 @@
     <div v-show="visible"
          class="spinner"
          :class="{
-             'spinner--primary': color === 'primary',
-             'spinner--secondary': color === 'secondary',
-             'spinner--success': color === 'success',
-             'spinner--warning': color === 'warning',
-             'spinner--danger': color === 'danger',
-             'spinner--info': color === 'info',
+             'spinner--primary': color === Colors.PRIMARY,
+             'spinner--secondary': color === Colors.SECONDARY,
+             'spinner--success': color === Colors.SUCCESS,
+             'spinner--warning': color === Colors.WARNING,
+             'spinner--danger': color === Colors.DANGER,
+             'spinner--info': color === Colors.INFO,
          }">
         <div></div><div></div><div></div><div></div>
         <div></div><div></div><div></div><div></div><div></div><div></div>
         <div></div><div></div></div>
 </template>
 
-<script>
-    export default {
-        name: 'Spinner'
-    };
+<script lang="ts">
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Colors } from '@/common/constants';
+
+/**
+ * @class Spinner
+ * @property {Colors} color - цвет спинера
+ * @property {boolean} visible - видимость спинера
+ */
+@Component
+export default class Spinner extends Vue {
+    Colors = Colors;
+
+    @Prop() color?: Colors;
+
+    @Prop(Boolean) visible!: boolean;
+}
 </script>
-
-<style scoped>
-
-</style>

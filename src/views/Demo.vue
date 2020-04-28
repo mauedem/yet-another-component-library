@@ -1,6 +1,7 @@
 <template>
     <div>
         <!-- Button -->
+        <h2>Button</h2>
         <btn>Default</btn>
         <btn :color="Colors.PRIMARY">Primary</btn>
         <btn :color="Colors.SECONDARY">Secondary</btn>
@@ -10,6 +11,7 @@
         <btn :color="Colors.INFO">Info</btn>
 
          <!-- Alert -->
+        <h2>Alert</h2>
         <alert visible
                title="Primary"
                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -67,6 +69,7 @@
         </alert>
 
         <!-- Badge -->
+        <h2>Badge</h2>
         <badge>Default</badge>
         <badge :color="Colors.PRIMARY">Primary</badge>
         <badge :color="Colors.SECONDARY">Secondary</badge>
@@ -76,9 +79,11 @@
         <badge :color="Colors.INFO">Info</badge>
 
         <!-- Breadcrumb -->
+        <h2>Breadcrumb</h2>
         <breadcrumb :items="items"></breadcrumb>
 
         <!-- Spinner -->
+        <h2>Spinner</h2>
         <spinner visible></spinner>
         <spinner visible
                  color="primary"></spinner>
@@ -104,12 +109,14 @@ import { Colors } from '@/common/constants';
 import Badge from '@/components/Badge.vue';
 import Alert from '@/components/Alert.vue';
 import Breadcrumb from '@/components/Breadcrumb.vue';
+import Spinner from '@/components/Spinner.vue';
 
 @Component({
     components: {
         badge: Badge,
         alert: Alert,
         breadcrumb: Breadcrumb,
+        spinner: Spinner,
     },
 })
 export default class Demo extends Vue {
