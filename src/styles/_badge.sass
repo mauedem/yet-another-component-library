@@ -5,12 +5,23 @@
     font-weight: $font-weight-bold
     line-height: 1
     text-align: center
-    vertical-align: center
+    vertical-align: super
     white-space: nowrap
     border-radius: 4px
     background-color: #f6f6f6
+    margin-bottom: 16px
+    margin-left: 2px
+
+
+    @mixin badge-variant($color)
+        @if($color == $warning)
+            color: #444444
+        @else
+            color: white
+        background-color: $color
 
     // Генерируем контекстные классы модификаторов
-    @each $variant, $color in (primary: $primary, secondary: $secondary, success: $success, warning: $warning, danger: $danger, info: $info)
+    @each $variant, $color in $colors
         &--#{$variant}
             @include badge-variant($color)
+

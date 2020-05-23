@@ -1,0 +1,57 @@
+.modal
+    display: inline-block
+    padding: 90px 0
+    position: fixed
+    z-index: 9998
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.5)
+    transition: opacity 0.3s ease
+    overflow-y: auto
+
+    &__container
+        margin: 0 auto
+        padding: 20px 30px
+        background-color: #fff
+        border-radius: $border-radius
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33)
+        transition: all 0.3s ease
+
+    &__header
+        text-align: center !important
+        margin: 0
+            bottom: 10px
+        padding-top: 0
+        color: #333333
+
+    &__body
+        text-align: left
+        border-top: $border-width solid #aaaaaa
+        margin: 0
+        padding: 20px 0
+        color: #333333
+
+    &__footer
+        display: block
+        margin-left: auto
+        font-size: 12px
+
+    @mixin modal-variant($color)
+        .modal__header
+            @if($color == $warning)
+                color: darken($warning, 15%)
+            @else
+               color: $color
+        .modal__body
+            @if($color == $warning)
+                border-top: $border-width solid rgba($color, .6)
+            @else
+                border-top: $border-width solid rgba($color, .2)
+
+    // Генерируем контекстные классы модификаторов
+    @each $variant, $color in $colors
+        &--#{$variant}
+            @include modal-variant($color)
+

@@ -11,28 +11,25 @@
                 'btn--info': color === Colors.INFO,
             }">
         <slot />
+        <slot name="icon" />
     </button>
 </template>
 
 <script lang="ts">
-import {
-    Vue, Component, Prop, Emit,
-} from 'vue-property-decorator';
-import { Colors } from '@/common/constants';
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Color } from '@/common/constants';
 
 /**
  * @class BaseButton
- * @property {Colors} color - цвет кнопки
- * @method onClick - вызывает событие по клику на кнопку
+ * @property {Color} color - цвет кнопки
  */
 @Component
 export default class BaseButton extends Vue {
-    Colors = Colors;
+    Colors = Color;
 
-    @Prop() color?: Colors;
+    @Prop() color?: Color;
 
-    @Emit('click')
-    onClick() {
+    private onClick(): void {
         this.$emit('click');
     }
 }

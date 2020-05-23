@@ -14,16 +14,16 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Colors } from '@/common/constants';
+import { Color } from '@/common/constants';
 
 /**
  * @class Badge
- * @property {Colors} color - цвет значка
+ * @property {Color} color - цвет значка
  */
 @Component
 export default class Badge extends Vue {
-    Colors = Colors;
+    Colors = Color;
 
-    @Prop() color?: Colors;
+    @Prop({ required: true }) color!: Color;
 }
 </script>

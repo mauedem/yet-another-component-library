@@ -1,8 +1,6 @@
 .alert
     position: relative
-    border: $border-width solid #cccccc
-    border-radius: $border-radius
-    color: #666666
+    color: #444444
 
     &__header
         margin: 0
@@ -11,10 +9,19 @@
         font-weight: 500
         font-size: $font-size-base
         background-color: #444444
+        border: $border-width #cccccc solid
+        border-bottom: none
+        border-top-left-radius: $border-radius
+        border-top-right-radius: $border-radius
 
     &__body
         padding: 10px
         margin: 0
+        border: $border-width #cccccc solid
+        border-top: none
+        border-bottom-left-radius: $border-radius
+        border-bottom-right-radius: $border-radius
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .2)
 
     &__close
         float: right
@@ -34,14 +41,24 @@
         width: 22px
         height: 22px
 
+    @mixin alert-variant($color)
+        .alert__header
+            @if($color == $warning)
+                color: #444444
+            background-color: $color
+            border: none
+        .alert__body
+            @if($color == $warning)
+                border: $border-width solid rgba($color, .9)
+            @else
+                border: $border-width solid rgba($color, .2)
+            background-color: rgba($color, .2)
+
     // Генерируем контекстные классы модификаторов
-    @each $variant, $color in (primary, $primary), (secondary, $secondary), (success, $success),  (warning, $warning), (danger, $danger), (info, $info)
+    @each $variant, $color in $colors
         &--#{$variant}
             @include alert-variant($color)
 
-// Анимация появления и исчезнования alert
-.fade-enter-active, .fade-leave-active
-    transition: opacity .5s
 
-.fade-enter, .fade-leave-to
-    opacity: 0
+
+

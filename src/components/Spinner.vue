@@ -16,18 +16,18 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Colors } from '@/common/constants';
+import { Color } from '@/common/constants';
 
 /**
  * @class Spinner
- * @property {Colors} color - цвет спинера
+ * @property {Color} color - цвет спинера
  * @property {boolean} visible - видимость спинера
  */
 @Component
 export default class Spinner extends Vue {
-    Colors = Colors;
+    Colors = Color;
 
-    @Prop() color?: Colors;
+    @Prop({ required: true }) color!: Color;
 
     @Prop(Boolean) visible!: boolean;
 }

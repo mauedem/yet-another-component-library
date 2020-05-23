@@ -1,0 +1,30 @@
+/* Стандартная анимация появления и исчезнования */
+.fade-animation
+    &-enter-active, &-leave-active
+        transition: opacity .5s
+
+    &-enter, &-leave-to
+        opacity: 0
+
+/* Анимация появления селекта */
+.select-animation
+    &-enter-active, &-leave-active
+        transition: opacity .3s
+
+    &-enter, &-leave-to
+        opacity: 0
+
+/* Анимация поиска в селекте */
+//.select-search-animation
+
+/* Анимация появления и исчезнования модального окна */
+.modal-animation
+    &-enter
+        opacity: 0
+
+    &-leave-active
+        opacity: 0
+
+    &-enter &-container,
+    &-leave-active &-container
+        transform: scale(1.1)

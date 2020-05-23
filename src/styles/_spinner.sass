@@ -73,7 +73,7 @@
             left: 62px
 
     // Генерируем контекстные классы модификаторов
-    @each $variant, $color in (primary: $primary, secondary: $secondary, success: $success, warning: $warning, danger: $danger, info: $info)
+    @each $variant, $color in $colors
         &--#{$variant} div
             background: $color
 

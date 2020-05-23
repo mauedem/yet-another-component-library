@@ -71,22 +71,22 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Colors } from '@/common/constants';
+import { Color } from '@/common/constants';
 
 /**
  * @class Pagination
- * @property {Colors} color - цвет pagination
+ * @property {Color} color - цвет pagination
  * @property {number} pagesCount - колличество страниц
  * @property {number} currentPage - текущая страница
  */
 @Component
 export default class Pagination extends Vue {
-    Colors = Colors;
+    Colors = Color;
 
-    @Prop() color?: Colors;
+    @Prop({ required: true }) color!: Color;
 
-    @Prop(Number) pagesCount!: number
+    @Prop({ required: true }) pagesCount!: number
 
-    @Prop(Number) currentPage!: number
+    @Prop({ required: true }) currentPage!: number
 }
 </script>

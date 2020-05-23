@@ -1,5 +1,5 @@
 <template>
-    <transition name="fade">
+    <transition name="fade-animation">
         <div v-show="visible"
              role="alert"
              :class="{
@@ -13,9 +13,10 @@
              class="alert">
 
             <btn class="alert__close"
-                 @click="visible = false">
+                 @click="hide">
                 <img class="alert__image"
-                     src="../assets/icons/x.svg" alt="Закрыть">
+                     src="../assets/icons/x.svg"
+                     alt="Закрыть">
             </btn>
 
             <h3 class="alert__header"
@@ -28,25 +29,32 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Colors } from '@/common/constants';
+import { Color } from '@/common/constants';
 
 /**
  * @class Alert
- * @property {Colors} color - цвет уведомления
+ * @property {Color} color - цвет уведомления
  * @property {string} title - название уведомления
  * @property {string} content - тело уведомления
  * @property {boolean} visible - видимость уведомления
  */
 @Component
 export default class Alert extends Vue {
-    Colors = Colors;
+    Colors = Color;
 
-    @Prop() color?: Colors;
+    @Prop({ required: true }) color!: Color;
 
-    @Prop(Boolean) visible!: boolean;
+    @Prop({ required: true }) visible!: boolean;
 
     @Prop({ required: true }) title!: string;
 
     @Prop({ required: true }) content!: string;
+
+    /*
+    * Скрывает alert при нажатии на крестик
+    * */
+    private hide(): void {
+        this.$emit('update:visible', false);
+    }
 }
 </script>

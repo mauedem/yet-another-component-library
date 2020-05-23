@@ -19,5 +19,21 @@
         color: $primary
         pointer-events: none
 
+        &::before
+            color: gray
+
         & .link
             text-decoration: none
+
+    @mixin breadcrumb-variant($color)
+        @if($color == $warning)
+            color: darken($color, 25%)
+        @else
+            color: $color
+
+    // Генерируем контекстные классы модификаторов
+    @each $variant, $color in $colors
+        &--#{$variant} .active
+            @include breadcrumb-variant($color)
+
+

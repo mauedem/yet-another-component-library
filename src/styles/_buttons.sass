@@ -22,8 +22,20 @@
         opacity: .65
         pointer-events: none
 
+    @mixin button-variant($color)
+        @if($color == $warning)
+            color: #444444
+        @else
+            color: white
+        background-color: $color
+
+        &:hover
+            @if ($color == $warning)
+                background: linear-gradient(to top, $color 5%, darken($color, 15%) 100%)
+            @else
+                background: linear-gradient(to top, $color 5%, darken($color, 5%) 100%)
+
     // Генерируем контекстные классы модификаторов
-    @each $variant, $color in (primary, $primary), (secondary, $secondary), (success, $success),  (warning, $warning), (danger, $danger), (info, $info)
+    @each $variant, $color in $colors
         &--#{$variant}
             @include button-variant($color)
-

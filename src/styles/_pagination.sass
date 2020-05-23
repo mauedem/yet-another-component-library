@@ -4,17 +4,20 @@
 
     &__item
         border: $border-width solid #cccccc
+        border-radius: $border-radius
         color: #666666
         cursor: pointer
-        padding:
-            left: 5px
-            right: 5px
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .2)
+        padding: 4px
+        margin:
+            left: 4px
+            right: 4px
 
         &:hover
             background-color: #eeeeee
             text-decoration: none
 
-        &:first-child
+        &:first-child, &:last-child
             background-color: #888888
             color: white
             border:
@@ -25,18 +28,7 @@
                 background-color: #666666
                 color: white
 
-        &:last-child
-            background-color: #888888
-            color: white
-            border:
-                top-right-radius: $border-radius
-                bottom-right-radius: $border-radius
-
-            &:hover
-                background-color: #666666
-                color: white
-
-        &:nth-child(2)
+        &:nth-child(2), &:nth-last-child(2)
             background-color: white
             color: #666666
 
@@ -44,13 +36,9 @@
                 background-color: #eeeeee
                 text-decoration: none
 
-        &:nth-last-child(2)
-            background-color: white
-            color: #666666
-
-            &:hover
-                background-color: #eeeeee
-                text-decoration: none
+        &:nth-child(3), &:nth-last-of-type(3)
+            border: none
+            box-shadow: none
 
     & .dots
         pointer-events: none
@@ -70,7 +58,45 @@
     .hidden
         display: none
 
+    @mixin pagination-variant($color)
+        .pagination__item
+            @if ($color == $warning)
+                color: #444444
+            @else
+                color: rgba($color, .8)
+            color: #666666
+            border: $border-width solid $color
+
+            &:first-child, &:last-child
+                @if($color == $warning)
+                    color: #444444
+                @else
+                    color: white
+                background-color: $color
+
+                &:hover
+                    background-color: darken($color, 10%)
+
+            &:nth-child(3), &:nth-last-of-type(3)
+                @if($color == $warning)
+                    color: #444444
+                @else
+                    color: rgba($color, .8)
+                border: none
+
+            &:hover
+                background-color: rgba($color, 0.1)
+
+        & .active
+            @if ($color == $warning)
+                color: #444444
+            @else
+                color: white
+            background-color: $color !important
+
+
     // Генерируем контекстные классы модификаторов
-    @each $variant, $color in (primary: $primary, secondary: $secondary, success: $success, warning: $warning, danger: $danger, info: $info)
+    @each $variant, $color in $colors
         &--#{$variant}
             @include pagination-variant($color)
+
