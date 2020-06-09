@@ -221,7 +221,7 @@
 
         </div>
 
-         <!-- Forms -->
+        <!-- Forms -->
         <h2>Form</h2>
 
         <Form :fields="testFormFields"
@@ -233,7 +233,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { Color, ModalType, FieldType } from '@/common/constants';
+import { Color, FieldType, ModalType } from '@/common/constants';
 
 import Badge from '@/components/Badge.vue';
 import Alert from '@/components/Alert.vue';
@@ -254,8 +254,6 @@ import Form from '@/components/Form.vue';
         Form,
     },
 })
-
-
 export default class Demo extends Vue {
     private alertText: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n'
         + 'Fusce id fermentum quam. Proin sagittis, nibh id hendrerit\n'
@@ -296,6 +294,9 @@ export default class Demo extends Vue {
         ['test1_field']: '',
         ['test2_field']: '',
         ['test3_field']: '',
+        ['test4_field']: '',
+        ['test5_field']: '',
+        ['test6_field']: [],
     };
 
     private testFormFields = [
@@ -303,19 +304,19 @@ export default class Demo extends Vue {
             name: 'test1_field',
             type: FieldType.STRING,
             label: 'String field',
-            note: 'Some note for string input',
+            note: 'Some note for string field',
         },
         {
             name: 'test2_field',
             type: FieldType.NUMBER,
             label: 'Number field',
-            note: 'Some note for number input',
+            note: 'Some note for number field',
         },
         {
             name: 'test3_field',
             type: FieldType.SELECT,
             label: 'Select field',
-            note: 'Some note for select input',
+            note: 'Some note for select field',
             options: [
                 {
                     label: 'Option 1',
@@ -326,6 +327,46 @@ export default class Demo extends Vue {
                     value: 'option_2',
                 },
             ],
+        },
+        {
+            name: 'test4_field',
+            type: FieldType.COUNTRY,
+            label: 'Country field',
+            note: 'Some note for country field',
+        },
+        {
+            name: 'test5_field',
+            type: FieldType.RADIO,
+            label: 'Radio field',
+            note: 'Some note for radio field',
+            options: [
+                {
+                    label: 'Option 1',
+                    value: 'radio_1',
+                },
+                {
+                    label: 'Option 2',
+                    value: 'radio_2',
+                },
+            ],
+            inline: true,
+        },
+        {
+            name: 'test6_field',
+            type: FieldType.CHECKBOX,
+            label: 'Checkbox field',
+            note: 'Some note for checkbox field',
+            options: [
+                {
+                    label: 'Option 1',
+                    value: 'checkbox_1',
+                },
+                {
+                    label: 'Option 2',
+                    value: 'checkbox_2',
+                },
+            ],
+            inline: true,
         },
     ]
 

@@ -1,6 +1,7 @@
 <template>
     <div class="field">
-        <btn class="field__note-button"
+        <btn v-show="note"
+             class="field__note-button"
              @click="toggleNoteVisible">
             <img class="field__note-image"
                  src="../../assets/icons/question-circle.svg"
@@ -21,6 +22,8 @@
              @click="toggleOptionsVisible"
              :name="name"
              :id="name">
+
+            <slot :value="value"></slot>
             {{ selectedLabel }}
 
             <template #icon>
@@ -36,7 +39,6 @@
             </template>
         </btn>
 
-        <!-- TODO сделать поиск по опциям + анимацию к нему -->
         <transition name="select-animation">
             <div v-show="visible"
                  class="select">
@@ -45,14 +47,18 @@
                        placeholder="Search"
                        v-model="searchedText">
 
-                <div v-for="option in filteredOptions"
-                     :key="'option' + option.value"
+                <div v-for="(option, index) in filteredOptions"
+                     :key="index"
                      class="select__option"
                      :value="option.value"
                      @click="select(option.value, option.label)">
+
+                    <slot name="option"
+                          :label="option.label"
+                          :value="option.value">
+                    </slot>
                     {{ option.label }}
                 </div>
-
             </div>
         </transition>
     </div>
@@ -67,7 +73,7 @@ import { SelectOption } from '@/common/constants';
  * @property {string} name - уникальное название
  * @property {string} label - заголовок инпута
  * @property {string} note - подсказка
- * @property {string} label - значение инпута
+ * @property {string} value - значение инпута
  * @property {SelectOption[]} options - опции селекта
  */
 @Component
@@ -100,11 +106,7 @@ export default class SelectField extends Vue {
         return result;
     }
 
-    get mutableValue() {
-        return this.value;
-    }
-
-    set mutableValue(value) {
+    private mutateValue(value: string): void {
         this.$emit('input', value);
     }
 
@@ -117,7 +119,7 @@ export default class SelectField extends Vue {
     private selectedLabel = '';
 
     private select(value: string, label: string): void {
-        this.mutableValue = value;
+        this.mutateValue(value);
 
         this.selectedLabel = label;
 

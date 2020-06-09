@@ -1,0 +1,60 @@
+.radio
+    display: flex
+    align-items: center
+    outline: none
+    margin-right: 10px
+
+    &--inline
+        display: inline-flex
+        flex-wrap: wrap
+
+    &__input
+        position: absolute
+        opacity: 0
+        z-index: -1
+
+        /* Стили для радиокнопки, находящейся в состоянии checked */
+        &:checked + .radio__label::before
+            border: 5px solid $primary
+
+        /* Стили для активной радиокнопки (при нажатии на неё) */
+        &:not(:disabled):active + .radio__label::before
+            background-color: rgba($primary, .2)
+            border-color: $primary
+
+        /* Стили при наведении курсора на радио */
+        &:not(:disabled):not(:checked) + .radio__label:hover::before
+            border-color: $primary
+
+        /* Стили для радиокнопки, находящейся в фокусе */
+        &:focus + .radio__label::before
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .2)
+
+        /* Стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+        &:focus:not(:checked) + .radio__label::before
+            border-color: #666666
+
+        /* Стили для радиокнопки, находящейся в состоянии disabled */
+        &:disabled + .radio__label::before
+            background-color: #cccccc
+
+        & + .radio__label
+            display: inline-flex
+            align-items: center
+            user-select: none
+
+            &::before
+                content: ''
+                display: inline-block
+                width: 18px
+                height: 18px
+                flex-shrink: 0
+                flex-grow: 0
+                border: 2px solid #666666
+                border-radius: 50%
+                background-repeat: no-repeat
+                background-position: center center
+                background-size: 50% 50%
+                margin-right: 6px
+                position: relative
+                top: -1px

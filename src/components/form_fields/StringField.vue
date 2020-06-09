@@ -1,6 +1,7 @@
 <template>
     <div class="field">
-        <btn class="field__note-button"
+        <btn v-show="note"
+             class="field__note-button"
              @click="toggleNoteVisible">
             <img class="field__note-image"
                  src="../../assets/icons/question-circle.svg"

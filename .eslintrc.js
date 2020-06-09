@@ -19,7 +19,9 @@ module.exports = {
         'class-methods-use-this': [0],
         'no-restricted-syntax': [0],
         'no-useless-computed-key': [0],
-
+        'no-underscore-dangle': [0],
+        'prefer-rest-params': [0],
+        'object-curly-newline': [0],
     },
     overrides: [
         {

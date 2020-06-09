@@ -24,6 +24,34 @@
                               :value="answers[field.name]"
                               @input="(value) => { onInput(field.name, value) }">
                 </select-field>
+
+                <country-field v-else-if="field.type === 'country'"
+                               :name="field.name"
+                               :label="field.label"
+                               :note="field.note"
+                               :value="answers[field.name]"
+                               @input="(value) => { onInput(field.name, value) }">
+                </country-field>
+
+                <radio-field v-else-if="field.type === 'radio'"
+                             :name="field.name"
+                             :label="field.label"
+                             :note="field.note"
+                             :options="field.options"
+                             :value="answers[field.name]"
+                             @input="(value) => { onInput(field.name, value) }"
+                             :inline="field.inline">
+                </radio-field>
+
+                <checkbox-field v-else-if="field.type === 'checkbox'"
+                                :name="field.name"
+                                :label="field.label"
+                                :note="field.note"
+                                :options="field.options"
+                                :value="answers[field.name]"
+                                @input="(value) => { onInput(field.name, value) }"
+                                :inline="field.inline">
+                </checkbox-field>
             </div>
         </template>
     </form>
@@ -35,19 +63,24 @@ import { FormField } from '@/common/constants';
 import StringField from '@/components/form_fields/StringField.vue';
 import NumberField from '@/components/form_fields/NumberField.vue';
 import SelectField from '@/components/form_fields/SelectField.vue';
-
-@Component({
-    components: {
-        stringField: StringField,
-        numberField: NumberField,
-        selectField: SelectField,
-    },
-})
+import RadioField from '@/components/form_fields/RadioField.vue';
+import CheckboxField from '@/components/form_fields/CheckboxField.vue';
+import CountryField from '@/components/form_fields/CountryField.vue';
 
 /**
  * @class Form
  * @property {FormField} - поле формы
  */
+@Component({
+    components: {
+        StringField,
+        NumberField,
+        SelectField,
+        CountryField,
+        RadioField,
+        CheckboxField,
+    },
+})
 export default class Form extends Vue {
     @Prop({ required: true }) fields!: FormField[];
 
@@ -55,11 +88,17 @@ export default class Form extends Vue {
 
     created() {
         for (const field of this.fields) {
-            Vue.set(this.answers, field.name, '');
+            if (field.type === 'checkbox') {
+                Vue.set(this.answers, field.name, []);
+            } else {
+                Vue.set(this.answers, field.name, '');
+            }
         }
     }
 
     private onInput(field: string, value: string): void {
+        console.log('on input', field, value);
+
         Vue.set(this.answers, field, value);
 
         this.$emit('input', { field, value });
