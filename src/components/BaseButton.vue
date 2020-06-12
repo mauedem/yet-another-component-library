@@ -27,7 +27,7 @@ import { Color } from '@/common/constants';
 export default class BaseButton extends Vue {
     Colors = Color;
 
-    @Prop() color?: Color;
+    @Prop({ default: Color.PRIMARY }) color?: Color;
 
     private onClick(): void {
         this.$emit('click');

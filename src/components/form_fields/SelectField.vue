@@ -1,22 +1,8 @@
 <template>
     <div class="field">
-        <btn v-show="note"
-             class="field__note-button"
-             @click="toggleNoteVisible">
-            <img class="field__note-image"
-                 src="../../assets/icons/question-circle.svg"
-                 alt="Подсказка">
-        </btn>
-
-        <label class="field__label"
-               :for="name">
-            {{ label }}
-        </label>
-
-        <p v-show="noteVisible"
-            class="field__note">
-            {{ note }}
-        </p>
+        <field-layout :note="note"
+                      :name="name"
+                      :label="label" />
 
         <btn class="field__input"
              @click="toggleOptionsVisible"
@@ -67,6 +53,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { SelectOption } from '@/common/constants';
+import FieldLayout from '@/layouts/FieldLayout.vue';
 
 /**
  * @class SelectField
@@ -76,7 +63,11 @@ import { SelectOption } from '@/common/constants';
  * @property {string} value - значение инпута
  * @property {SelectOption[]} options - опции селекта
  */
-@Component
+@Component({
+    components: {
+        'field-layout': FieldLayout,
+    },
+})
 export default class SelectField extends Vue {
     @Prop({ required: true }) value!: string;
 
@@ -124,12 +115,6 @@ export default class SelectField extends Vue {
         this.selectedLabel = label;
 
         this.visible = false;
-    }
-
-    private noteVisible = false;
-
-    private toggleNoteVisible(): void {
-        this.noteVisible = !this.noteVisible;
     }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <form class="form">
+    <div class="form">
         <template v-for="field in fields">
             <div class="form__field" :key="'form_field' + field.name">
                 <string-field v-if="field.type === 'string'"
@@ -54,7 +54,7 @@
                 </checkbox-field>
             </div>
         </template>
-    </form>
+    </div>
 </template>
 
 <script lang="ts">
@@ -69,7 +69,7 @@ import CountryField from '@/components/form_fields/CountryField.vue';
 
 /**
  * @class Form
- * @property {FormField} - поле формы
+ * @property {FormField} fields - поля формы
  */
 @Component({
     components: {

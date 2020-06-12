@@ -1,22 +1,8 @@
 <template>
     <div class="field">
-        <btn v-show="note"
-             class="field__note-button"
-             @click="toggleNoteVisible">
-            <img class="field__note-image"
-                 src="../../assets/icons/question-circle.svg"
-                 alt="Подсказка">
-        </btn>
-
-        <label class="field__label"
-               :for="name">
-            {{ label }}
-        </label>
-
-        <p v-show="noteVisible"
-           class="field__note">
-            {{ note }}
-        </p>
+        <field-layout :note="note"
+                      :name="name"
+                      :label="label" />
 
         <div role="radiogroup">
             <div class="radio"
@@ -42,6 +28,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { RadioOption } from '@/common/constants';
+import FieldLayout from '@/layouts/FieldLayout.vue';
 
 /**
  * @class RadioField
@@ -52,7 +39,11 @@ import { RadioOption } from '@/common/constants';
  * @property {string} note - подсказка
  * @property {boolean} inline - отображать в строку (столбик по дефолту)
  */
-@Component
+@Component({
+    components: {
+        'field-layout': FieldLayout,
+    },
+})
 export default class RadioField extends Vue {
     @Prop({ required: true }) value!: string;
 
@@ -72,12 +63,6 @@ export default class RadioField extends Vue {
 
     set mutableValue(value) {
         this.$emit('input', value);
-    }
-
-    private noteVisible = false;
-
-    private toggleNoteVisible(): void {
-        this.noteVisible = !this.noteVisible;
     }
 }
 </script>

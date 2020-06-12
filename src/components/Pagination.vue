@@ -1,5 +1,5 @@
 <template>
-    <nav class="Pagination">
+    <nav class="pagination">
         <ul class="pagination"
             :class="{
                 'pagination--primary': color ===  Colors.PRIMARY,
@@ -10,7 +10,7 @@
                 'pagination--info': color === Colors.INFO,
             }">
             <li class="pagination__item"
-                @click="currentPage = 1">
+                @click="actualPage = 1">
                 <a class="link pagination__link"
                    href="#">
                     First
@@ -18,8 +18,8 @@
             </li>
 
             <li class="pagination__item"
-                @click="currentPage -= 1"
-                :class="{ disabled: currentPage === 1 }">
+                @click="actualPage -= 1"
+                :class="{ disabled: actualPage === 1 }">
                 <a class="link pagination__link"
                    href="#">
                     Previous
@@ -27,31 +27,30 @@
             </li>
 
             <li class="pagination__item dots"
-                :class="{
-                    hidden: currentPage <= 4
-                }">...</li>
+                :class="{ hidden: actualPage <= 4 }">
+                ...
+            </li>
 
             <li class="pagination__item"
-                v-for="(page, index) in pagesCount"
-                :key="'pagination' + (index)"
+                v-for="index in totalPages"
+                :key="'pagination' + index"
                 :class="{
-                    active: index + 1 === currentPage,
-                    hidden: (index + 1 < (currentPage - 3))
-                        || (index + 1 > (currentPage + 3)),
+                    active: index + 1 === actualPage,
+                    hidden: isHidden(index),
                 }"
-                @click="currentPage = index + 1">
+                @click="actualPage = index + 1">
                 <a class="link pagination__link"
                    href="#">{{ index + 1 }}</a>
             </li>
 
             <li class="pagination__item dots"
-                :class="{
-                    hidden: currentPage >= 27
-                }">...</li>
+                :class="{ hidden: actualPage >= totalPages - 3 }">
+                ...
+            </li>
 
             <li class="pagination__item"
-                @click="currentPage += 1"
-                :class="{ disabled: currentPage === pagesCount }">
+                @click="actualPage += 1"
+                :class="{ disabled: actualPage === totalPages }">
                 <a class="link pagination__link"
                    href="#">
                     Next
@@ -59,7 +58,7 @@
             </li>
 
             <li class="pagination__item"
-                @click="currentPage = pagesCount">
+                @click="actualPage = totalPages">
                 <a class="link pagination__link"
                    href="#">
                     Last
@@ -76,7 +75,7 @@ import { Color } from '@/common/constants';
 /**
  * @class Pagination
  * @property {Color} color - цвет pagination
- * @property {number} pagesCount - колличество страниц
+ * @property {number} totalPages - колличество страниц
  * @property {number} currentPage - текущая страница
  */
 @Component
@@ -85,8 +84,15 @@ export default class Pagination extends Vue {
 
     @Prop({ required: true }) color!: Color;
 
-    @Prop({ required: true }) pagesCount!: number
+    @Prop({ required: true }) totalPages!: number
 
     @Prop({ required: true }) currentPage!: number
+
+    private actualPage = this.currentPage;
+
+    private isHidden(index: number): boolean {
+        return (index + 1 < (this.actualPage - 3))
+            || (index + 1 > (this.actualPage + 3));
+    }
 }
 </script>

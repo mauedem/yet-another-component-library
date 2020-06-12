@@ -1,5 +1,5 @@
 <template>
-    <nav aria-label="Breadcrumb">
+    <nav aria-label="breadcrumb">
         <ol class="breadcrumb"
             :class="{
                 'breadcrumb--primary': color === Colors.PRIMARY,
@@ -30,7 +30,7 @@ import { Color } from '@/common/constants';
 /**
  * @class Breadcrumb
  * @property {Color} color - цвет спинера
- * @property {Array} items - массив объектов частей breadcrumb
+ * @property {Array[]} items - массив объектов частей breadcrumb
  */
 @Component
 export default class Breadcrumb extends Vue {
