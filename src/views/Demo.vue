@@ -11,7 +11,7 @@
                      :key="'button' + color">
                     <input type="radio"
                            :id="'button' + color"
-                           name="buttonColor"
+                           :name="'button' + color"
                            v-model="buttonColor"
                            :value="color">
 
@@ -34,7 +34,7 @@
                      :key="'alert' + color">
                     <input type="radio"
                            :id="'alert' + color"
-                           name="alertColor"
+                           :name="'alert' + color"
                            v-model="alertColor"
                            :value="color">
 
@@ -69,7 +69,7 @@
                      :key="'badge' + color">
                     <input type="radio"
                            :id="'badge' + color"
-                           name="badgeColor"
+                           :name="'badge' + color"
                            v-model="badgeColor"
                            :value="color">
 
@@ -94,7 +94,7 @@
                      :key="'breadcrumb' + color">
                     <input type="radio"
                            :id="'breadcrumb' + color"
-                           name="breadcrumbColor"
+                           :name="'breadcrumb' + color"
                            v-model="breadcrumbColor"
                            :value="color">
 
@@ -117,7 +117,7 @@
                      :key="'spinner' + color">
                     <input type="radio"
                            :id="'spinner' + color"
-                           name="spinnerColor"
+                           :name="'spinner' + color"
                            v-model="spinnerColor"
                            :value="color">
 
@@ -139,7 +139,7 @@
                      :key="'pagination' + color">
                     <input type="radio"
                            :id="'pagination' + color"
-                           name="paginationColor"
+                           :name="'pagination' + color"
                            v-model="paginationColor"
                            :value="color">
 
@@ -149,7 +149,7 @@
                 </div>
             </div>
 
-            <pagination :pages-count="30"
+            <pagination :total-pages="30"
                         :current-page="15"
                         :color="paginationColor">
             </pagination>
@@ -164,7 +164,7 @@
                  :key="'modal' + type">
                 <input type="radio"
                        :id="'modal' + type"
-                       name="modalType"
+                       :name="'modal' + modalType"
                        v-model="modalType"
                        :value="type">
                 <label :for="'modal' + type">
@@ -179,7 +179,7 @@
                      :key="'modal' + color">
                     <input type="radio"
                            :id="'modal' + color"
-                           name="modalColor"
+                           :name="'model' + modalColor"
                            v-model="modalColor"
                            :value="color">
 

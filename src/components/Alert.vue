@@ -1,7 +1,7 @@
 <template>
     <transition name="fade-animation">
         <div v-show="visible"
-             role="alert"
+             role="alertdialog"
              :class="{
                 'alert--primary': color === Colors.PRIMARY,
                 'alert--secondary': color === Colors.SECONDARY,
@@ -50,9 +50,6 @@ export default class Alert extends Vue {
 
     @Prop({ required: true }) content!: string;
 
-    /*
-    * Скрывает alert при нажатии на крестик
-    * */
     private hide(): void {
         this.$emit('update:visible', false);
     }

@@ -1,22 +1,8 @@
 <template>
     <div class="field">
-        <btn v-show="note"
-             class="field__note-button"
-             @click="toggleNoteVisible">
-            <img class="field__note-image"
-                 src="../../assets/icons/question-circle.svg"
-                 alt="Подсказка">
-        </btn>
-
-        <label class="field__label"
-               :for="name">
-            {{ label }}
-        </label>
-
-        <p v-show="noteVisible"
-            class="field__note">
-            {{ note }}
-        </p>
+        <field-layout :note="note"
+                      :name="name"
+                      :label="label" />
 
         <input class="field__input"
                type="text"
@@ -28,6 +14,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import FieldLayout from '@/layouts/FieldLayout.vue';
 
 /**
  * @class StringField
@@ -36,7 +23,11 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
  * @property {string} name - уникальное название
  * @property {string} note - подсказка
  */
-@Component
+@Component({
+    components: {
+        'field-layout': FieldLayout,
+    },
+})
 export default class StringField extends Vue {
     @Prop({ required: true }) value!: string;
 
@@ -52,12 +43,6 @@ export default class StringField extends Vue {
 
     set mutableValue(value) {
         this.$emit('input', value);
-    }
-
-    private noteVisible = false;
-
-    private toggleNoteVisible(): void {
-        this.noteVisible = !this.noteVisible;
     }
 }
 </script>

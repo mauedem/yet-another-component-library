@@ -20,7 +20,6 @@
                     v-text="header">
                 </h2>
 
-                <!-- TODO сделать валидацию header и body -->
                 <slot v-else
                       name="custom-header"></slot>
 
@@ -52,7 +51,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Color, ModalType } from '@/common/constants';
+import { Color } from '@/common/constants';
 
 /**
  * @class Modal
@@ -67,8 +66,6 @@ import { Color, ModalType } from '@/common/constants';
 @Component
 export default class Modal extends Vue {
     Colors = Color;
-
-    ModalTypes = ModalType;
 
     @Prop({ required: true }) color!: Color;
 

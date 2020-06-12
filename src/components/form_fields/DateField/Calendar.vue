@@ -1,11 +1,11 @@
 <template>
-
+$END$
 </template>
 
 <script>
 export default {
-    name: 'DateField',
-};
+name: "Calendar.vue"
+}
 </script>
 
 <style scoped>
