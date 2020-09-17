@@ -22,6 +22,7 @@ module.exports = {
         'no-underscore-dangle': [0],
         'prefer-rest-params': [0],
         'object-curly-newline': [0],
+        'no-continue': [0],
     },
     overrides: [
         {

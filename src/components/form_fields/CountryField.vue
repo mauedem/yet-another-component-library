@@ -33,11 +33,11 @@ import SelectField from './SelectField.vue';
  * @property {string} value - значение инпута
  */
 export default class CountryField extends Vue {
-    @Prop({ required: true }) value!: string;
-
     @Prop({ required: true }) name!: string;
 
     @Prop({ required: true }) label!: string;
+
+    @Prop({ required: true }) value!: string;
 
     @Prop(String) note?: string;
 

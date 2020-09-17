@@ -2,51 +2,46 @@
     <div class="field">
         <field-layout :note="note"
                       :name="name"
-                      :label="label" />
+                      :label="label">
 
-        <btn class="field__input"
-             @click="toggleOptionsVisible"
-             :name="name"
-             :id="name">
+            <btn class="field__input"
+                 @click="toggleOptionsVisible">
 
-            <slot :value="value"></slot>
-            {{ selectedLabel }}
+                <slot :value="value"></slot>
+                {{ selectedLabel }}
 
-            <template #icon>
-                <img v-if="!visible"
-                     class="select__icon"
-                     src="../../assets/icons/caret-down-fill.svg"
-                     alt="Показать">
+                <template #icon>
+                    <span v-if="!visible"
+                          class="mdi mdi-play select__icon select__icon--down"></span>
 
-                <img v-else
-                     class="select__icon"
-                     src="../../assets/icons/caret-up-fill.svg"
-                     alt="Скрыть">
-            </template>
-        </btn>
+                    <span v-else
+                          class="mdi mdi-play select__icon select__icon--up"></span>
+                </template>
+            </btn>
 
-        <transition name="select-animation">
-            <div v-show="visible"
-                 class="select">
-                <input class="select__input"
-                       type="text"
-                       placeholder="Search"
-                       v-model="searchedText">
+            <transition name="select-animation">
+                <div v-show="visible"
+                     class="select">
+                    <input class="select__input"
+                           type="text"
+                           placeholder="Search"
+                           v-model="searchedText">
 
-                <div v-for="(option, index) in filteredOptions"
-                     :key="index"
-                     class="select__option"
-                     :value="option.value"
-                     @click="select(option.value, option.label)">
+                    <div v-for="(option, index) in filteredOptions"
+                         :key="index"
+                         class="select__option"
+                         :value="option.value"
+                         @click="select(option.value, option.label)">
 
-                    <slot name="option"
-                          :label="option.label"
-                          :value="option.value">
-                    </slot>
-                    {{ option.label }}
+                        <slot name="option"
+                              :label="option.label"
+                              :value="option.value">
+                        </slot>
+                        {{ option.label }}
+                    </div>
                 </div>
-            </div>
-        </transition>
+            </transition>
+        </field-layout>
     </div>
 </template>
 
@@ -59,8 +54,8 @@ import FieldLayout from '@/layouts/FieldLayout.vue';
  * @class SelectField
  * @property {string} name - уникальное название
  * @property {string} label - заголовок инпута
- * @property {string} note - подсказка
  * @property {string} value - значение инпута
+ * @property {string} note - подсказка
  * @property {SelectOption[]} options - опции селекта
  */
 @Component({
@@ -69,15 +64,15 @@ import FieldLayout from '@/layouts/FieldLayout.vue';
     },
 })
 export default class SelectField extends Vue {
-    @Prop({ required: true }) value!: string;
-
     @Prop({ required: true }) name!: string;
 
     @Prop({ required: true }) label!: string;
 
-    @Prop({ required: true }) options!: SelectOption[];
+    @Prop({ required: true }) value!: string;
 
     @Prop(String) note?: string;
+
+    @Prop({ required: true }) options!: SelectOption[];
 
     private searchedText = '';
 

@@ -14,9 +14,9 @@
 
             <btn class="alert__close"
                  @click="hide">
-                <img class="alert__image"
-                     src="../assets/icons/x.svg"
-                     alt="Закрыть">
+                <template #icon>
+                    <span class="mdi mdi-close-circle-outline alert__icon"></span>
+                </template>
             </btn>
 
             <h3 class="alert__header"

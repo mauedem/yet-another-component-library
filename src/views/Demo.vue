@@ -234,7 +234,6 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Color, FieldType, ModalType } from '@/common/constants';
-
 import Badge from '@/components/Badge.vue';
 import Alert from '@/components/Alert.vue';
 import Breadcrumb from '@/components/Breadcrumb.vue';
@@ -297,6 +296,7 @@ export default class Demo extends Vue {
         ['test4_field']: '',
         ['test5_field']: '',
         ['test6_field']: [],
+        ['test7_field']: '',
     };
 
     private testFormFields = [
@@ -367,6 +367,12 @@ export default class Demo extends Vue {
                 },
             ],
             inline: true,
+        },
+        {
+            name: 'test7_field',
+            type: FieldType.DATE,
+            label: 'Date field',
+            note: 'Some note for date field',
         },
     ]
 

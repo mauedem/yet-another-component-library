@@ -32,7 +32,7 @@
             </li>
 
             <li class="pagination__item"
-                v-for="index in totalPages"
+                v-for="(page, index) in totalPages"
                 :key="'pagination' + index"
                 :class="{
                     active: index + 1 === actualPage,
@@ -75,7 +75,7 @@ import { Color } from '@/common/constants';
 /**
  * @class Pagination
  * @property {Color} color - цвет pagination
- * @property {number} totalPages - колличество страниц
+ * @property {number} totalPages - количество страниц
  * @property {number} currentPage - текущая страница
  */
 @Component

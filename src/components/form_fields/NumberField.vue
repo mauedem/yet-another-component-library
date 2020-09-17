@@ -2,13 +2,14 @@
     <div class="field">
         <field-layout :note="note"
                       :name="name"
-                      :label="label" />
+                      :label="label">
 
-        <input class="field__input"
-               type="number"
-               :id="name"
-               :name="name"
-               v-model="mutableValue">
+            <input class="field__input"
+                   type="number"
+                   :id="name"
+                   :name="name"
+                   v-model="mutableValue">
+        </field-layout>
     </div>
 </template>
 
@@ -18,9 +19,9 @@ import FieldLayout from '@/layouts/FieldLayout.vue';
 
 /**
  * @class NumberField
- * @property {number} value - значение инпута
- * @property {string} label - заголовок инпута
  * @property {string} name - уникальное название
+ * @property {string} label - заголовок инпута
+ * @property {number} value - значение инпута
  * @property {string} note - подсказка
  */
 @Component({
@@ -29,11 +30,11 @@ import FieldLayout from '@/layouts/FieldLayout.vue';
     },
 })
 export default class NumberField extends Vue {
-    @Prop({ required: true }) value!: number;
+    @Prop({ required: true }) name!: string;
 
     @Prop({ required: true }) label!: string;
 
-    @Prop({ required: true }) name!: string;
+    @Prop({ required: true }) value!: number;
 
     @Prop(String) note?: string;
 

@@ -1,0 +1,110 @@
+.date-string-input
+    &__icon
+        color: black
+        font-size: 22px
+        background-color: transparent
+        border: none
+        pointer-events: none
+        //display: inline-block
+        position: absolute
+        top: 15px
+        //bottom: 50px
+        left: 208px
+        width: 20px
+        height: 20px
+
+    &__controls
+        display: flex
+        justify-content: space-between
+        //flex-flow: row nowrap
+        margin: 8px
+
+    &__prev-button, &__next-button
+        color: black
+        border-radius: 50%
+        font-size: 20px
+        border: none
+        display: block
+        background-color: transparent
+        padding: 0
+
+        &:hover
+            background: none
+
+    &__calendar-table
+        width: 100%
+        max-width: 448px
+        border-spacing: 4px 8px
+
+.calendar
+    &__month-and-year
+        font-weight: bold
+
+    &__weekdays
+        padding-right: 10px
+        text-align: center
+
+    &__days
+        text-align: center
+
+    &__day
+        border-radius: 2px
+        padding: 1px
+        transition: .2s background-color
+        cursor: pointer
+
+        &.--today
+            color: #ffffff
+            background-color: $secondary
+            padding: 0
+            border: 0 !important
+
+        &.--active
+            color: #ffffff
+            background-color: $primary
+            padding: 0
+            border: 0 !important
+
+        &.--disabled
+            color: #888888
+            background-color: transparent
+            padding: 0
+            border: 0 !important
+            cursor: no-drop
+
+        &:hover
+            border: $border-width solid $secondary
+            padding: 0
+
+    &__mm
+        width: 40px
+        height: 170px
+        overflow-y: auto
+        cursor: pointer
+        margin-left: 38px
+        margin-right: 0
+
+    &__yyyy
+        width: 46px
+        height: 170px
+        margin-left: 80px
+        overflow-y: auto
+        cursor: pointer
+
+    &__nav
+        border: 0 !important
+        max-width: 150px
+
+        &-dd
+            padding: 3px 6px
+            margin-right: 3px
+
+        &-mm
+            padding: 3px 6px
+            margin-right: 3px
+
+        &-yyyy
+            padding: 3px 6px
+
+
+

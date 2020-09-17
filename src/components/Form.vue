@@ -52,6 +52,14 @@
                                 @input="(value) => { onInput(field.name, value) }"
                                 :inline="field.inline">
                 </checkbox-field>
+
+                <date-field v-else-if="field.type === 'date'"
+                            :name="field.name"
+                            :label="field.label"
+                            :note="field.note"
+                            :value="answers[field.name]"
+                            @input="(value) => { onInput(field.name, value) }">
+                </date-field>
             </div>
         </template>
     </div>
@@ -66,6 +74,7 @@ import SelectField from '@/components/form_fields/SelectField.vue';
 import RadioField from '@/components/form_fields/RadioField.vue';
 import CheckboxField from '@/components/form_fields/CheckboxField.vue';
 import CountryField from '@/components/form_fields/CountryField.vue';
+import DateField from '@/components/form_fields/DateField/Index.vue';
 
 /**
  * @class Form
@@ -79,6 +88,7 @@ import CountryField from '@/components/form_fields/CountryField.vue';
         CountryField,
         RadioField,
         CheckboxField,
+        DateField,
     },
 })
 export default class Form extends Vue {

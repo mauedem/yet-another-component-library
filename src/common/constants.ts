@@ -27,13 +27,13 @@ export enum FieldType {
     NUMBER = 'number',
     SELECT = 'select',
     COUNTRY = 'country',
-    ADDRESS = 'address',
-    CHECKBOX = 'checkbox',
     DATE = 'date',
+    CHECKBOX = 'checkbox',
+    RADIO = 'radio',
+    ADDRESS = 'address',
     MONEY = 'money',
     NESTED = 'nested',
     PHONE = 'phone',
-    RADIO = 'radio',
 }
 
 /* Interfaces */

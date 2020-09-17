@@ -2,26 +2,27 @@
     <div class="field">
         <field-layout :note="note"
                       :name="name"
-                      :label="label" />
+                      :label="label">
 
-        <div>
-            <div class="checkbox"
-                 :class="{ 'checkbox--inline': inline }"
-                 v-for="option in options"
-                 :key="'option' + option.value">
-                <input class="checkbox__input"
-                       type="checkbox"
-                       :name="name"
-                       :id="'option' + option.value"
-                       :value="option.value"
-                       v-model="checkedOptions">
+            <div>
+                <div class="checkbox"
+                     :class="{ 'checkbox--inline': inline }"
+                     v-for="option in options"
+                     :key="'option' + option.value">
+                    <input class="checkbox__input"
+                           type="checkbox"
+                           :name="name"
+                           :id="'option' + option.value"
+                           :value="option.value"
+                           v-model="checkedOptions">
 
-                <label class="checkbox__label"
-                       :for="'option' + option.value">
-                    {{ option.label }}
-                </label>
+                    <label class="checkbox__label"
+                           :for="'option' + option.value">
+                        {{ option.label }}
+                    </label>
+                </div>
             </div>
-        </div>
+        </field-layout>
     </div>
 </template>
 
@@ -32,11 +33,11 @@ import FieldLayout from '@/layouts/FieldLayout.vue';
 
 /**
  * @class CheckboxField
- * @property {string} value - значение инпута
  * @property {string} name - уникальное название
  * @property {string} label - заголовок инпута
- * @property {CheckboxOption[]} options - опции чекбокса
+ * @property {string} value - значение инпута
  * @property {string} note - подсказка
+ * @property {CheckboxOption[]} options - опции чекбокса
  * @property {boolean} inline - отображать в строку (столбик по дефолту)
  */
 @Component({
@@ -45,15 +46,15 @@ import FieldLayout from '@/layouts/FieldLayout.vue';
     },
 })
 export default class CheckboxField extends Vue {
-    @Prop({ required: true }) value!: string[];
-
     @Prop({ required: true }) name!: string;
 
     @Prop({ required: true }) label!: string;
 
-    @Prop({ required: true }) options!: CheckboxOption[];
+    @Prop({ required: true }) value!: string[];
 
     @Prop(String) note?: string;
+
+    @Prop({ required: true }) options!: CheckboxOption[];
 
     @Prop({ default: false }) inline?: boolean
 
