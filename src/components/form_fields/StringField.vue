@@ -5,10 +5,10 @@
                       :label="label">
 
             <input class="field__input"
-               type="text"
-               :id="name"
-               :name="name"
-               v-model="mutableValue">
+                   type="text"
+                   :id="name"
+                   :name="name"
+                   v-model="mutableValue">
         </field-layout>
     </div>
 </template>

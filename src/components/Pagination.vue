@@ -75,7 +75,11 @@ import { Color } from '@/common/constants';
 /**
  * @class Pagination
  * @property {Color} color - цвет pagination
+<<<<<<< HEAD
  * @property {number} totalPages - количество страниц
+=======
+ * @property {number} totalPages - колличество страниц
+>>>>>>> f62b0cd1a57fcd7c9c92049194cd510e357142d6
  * @property {number} currentPage - текущая страница
  */
 @Component

@@ -3,12 +3,10 @@
         <btn v-show="note"
              class="field__note-button"
              @click="toggleNoteVisible">
+
             <template #icon>
                 <span class="mdi mdi-information-outline field__note-image"></span>
             </template>
-<!--            <img class="field__note-image"-->
-<!--                 src="../assets/icons/question-circle.svg"-->
-<!--                 alt="Подсказка">-->
         </btn>
 
         <label class="field__label"
